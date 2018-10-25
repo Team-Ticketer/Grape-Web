@@ -2,7 +2,8 @@ pragma solidity ^0.4.23;
 
 
 contract Grape {
-    uint256 id = 0;
+    uint256 private concertID = 0;
+    uint256 private ticketID = 0;
 
     struct TicketType {
         string ticketName;
@@ -13,36 +14,53 @@ contract Grape {
 
     struct Concert {
         uint256 concertId;
-        address creater;
+        address creator;
         string name;
         string place;
         string term;
         string ownerName;
-        mapping (uint256 => TicketType) ticketTypes;
+        string ticketTypes;
         bool isPossibleAuction;
-        mapping (uint256 => string) tags;
+        string tags;
+        uint256 ticketListCount;
         mapping (uint256 => Ticket) ticketList;
     }
 
     mapping (uint256 => Concert) concertList;
 
-    struct Date {
-        uint256 year;
-        uint256 month;
-        uint256 day;
-        string time;
-    }
-
-    struct AuctionHistory {
-        Date date;
-        address seller;
-    }
-
     struct Ticket {
         uint256 concertId;
         address owner;
-        Date date;
-        mapping (uint256 => AuctionHistory) auctionHistorys;
+        string date;
+        string auctionHistorys;
         bool isAuction;
+    }
+
+    function createConcert(string name, string place, string term, string ownerName, string ticketTypes, bool isPossibleAuction, string tags) 
+    public payable returns(uint256 concertID){
+        concertList[concertID] = (Concert(id, msg.sender, name, place, term, ownerName, ticketTypes, isPossibleAuction, tags, 0));
+        concertID++;
+    }
+    function getConcert(uint256 concertId) public view returns (
+      address creator,
+      string name,
+      string place,
+      string term,
+      string ownerName,
+      string ticketTypes,
+      bool isPossibleAuction,
+      string tags,
+      uint256 ticketListCount
+    )
+    {
+      creator = concertList[concertId].creator;
+      name = concertList[concertId].name;
+      place = concertList[concertId].place;
+      term = concertList[concertId].term;
+      ownerName = concertList[concertId].ownerName;
+      ticketTypes = concertList[concertId].ticketTypes;
+      isPossibleAuction = concertList[concertId].isPossibleAuction;
+      tags = concertList[concertId].tags;
+      ticketListCount = concertList[concertId].ticketListCount;
     }
 }
