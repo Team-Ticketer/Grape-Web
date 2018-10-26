@@ -8,7 +8,7 @@ import { integrateWallet, removeWallet} from 'actions/wallet';
 
 import './Auth.scss'
 
-@connect(state => ({
+@connect((state) => ({
   walletInstance: state.wallet.walletInstance,
 }), {
   integrateWallet,

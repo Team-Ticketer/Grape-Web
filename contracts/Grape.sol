@@ -36,7 +36,7 @@ contract Grape {
     uint256 _ticketTypeCounts, string[] _ticketName, uint256[] _ticketPrice, string[] _ticketDescription, uint256[] _ticketAmount) 
     public payable returns(uint256 concertID){
         concertList[concertID] = (Concert(concertID, msg.sender, _name, _term, _ownerName, _ticketTypes, _isPossibleAuction, _ticketTypeCounts, _ticketName, _ticketPrice, _ticketDescription, _ticketAmount, 0));
-        concertID = concertID++;
+        concertID++;
     }
 
     function getConcert(uint256 _concertId) public view returns (
@@ -81,6 +81,6 @@ contract Grape {
         concertList[_concertId].ticketList[concertList[_concertId].ticketListCount].ticketType = _ticketType;
         concertList[_concertId].ticketList[concertList[_concertId].ticketListCount].date = block.timestamp;
         concertList[_concertId].ticketList[concertList[_concertId].ticketListCount].isAuction = false;
-        concertList[_concertId].ticketListCount = concertList[_concertId].ticketListCount++;
+        concertList[_concertId].ticketListCount++;
     }
 }

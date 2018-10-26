@@ -3,8 +3,8 @@ const Caver = require('caver-js')
 /**
  * truffle network variables
  */
-const FROM = '0xf2cc707d3e8a246e7479ae45245e86d1ea111bbd'
-const HOST = 'http://localhost'
+const FROM = '0xC39b1048d6DD7fB500A2E8F9fFFa0ca33cd4dB5a'
+const HOST = 'http://127.0.0.1'
 const PORT = '8551'
 const URL = `${HOST}:${PORT}`
 const NETWORK_ID = '1000'
