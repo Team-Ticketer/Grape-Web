@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import GoogleMap from './GoogleMap';
-
 import TicketPrice from './TicketPrice';
 
 import './DetailPost.css';

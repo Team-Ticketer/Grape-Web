@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
-import Header from '../components/Header';
-import DetailPost from '../components/DetailPost';
+import Header from '../components/common/Header';
+import DetailPost from '../components/DetailPost/DetailPost';
 
 class DetailPostContainer extends Component {
     render() {
