@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './TicketPrice.css';
+import './TicketPrice.scss';
 
 const TicketPrice = () => {
     return (

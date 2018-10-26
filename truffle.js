@@ -8,7 +8,7 @@ const HOST = 'http://127.0.0.1'
 const PORT = '8551'
 const URL = `${HOST}:${PORT}`
 const NETWORK_ID = '1000'
-const GASLIMIT = 20000000
+const GASLIMIT = 2000000
 
 const caver = new Caver(new Caver.providers.HttpProvider(URL))
 
@@ -24,7 +24,7 @@ module.exports = {
       network_id: NETWORK_ID,
       from: FROM,
       gas: GASLIMIT,
-      gasPrice: null,
+      gasPrice: 300,
     },
   },
 }

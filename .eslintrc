@@ -1,10 +1,10 @@
 {
   "globals": {
-    "window": true,
-    "document": true,
-    "DEV": true,
-    "DEPLOYED_ADDRESS": true,
-    "artifacts": true
+    "window": false,
+    "document": false,
+    "DEV": false,
+    "DEPLOYED_ADDRESS": false,
+    "artifacts": false
   },
   "parser": "babel-eslint",
   "extends": [

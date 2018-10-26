@@ -1,0 +1,62 @@
+//colors
+$black_38: rgba(0, 0, 0, 0.38);
+$white: #ffffff;
+$black:  black;
+$color_masala_approx: #3d3d3d;
+$black_16: rgba(0, 0, 0, 0.16);
+$color_purple_approx: #6b10af;
+
+//fonts
+$font_0: VT323;
+$font_1: monospace;
+
+.detail--concert--price--wrapper {
+	display: inline-block;
+	margin-top: 3%;
+	width: calc(100% - 30px);
+	padding: 15px;
+	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: 0 3px 20px 0 $black_38;
+	background-color: $white;
+}
+.detail--concert--price--title {
+	text-align: center;
+	font-size: 40px;
+	padding-bottom: 10px;
+	margin-top: 3vh;
+	border-bottom: 3px solid $black;
+	font-family: $font_0, $font_1;
+}
+.detail--concert--price--ticket {
+	display: flex;
+	width: calc(100% - 20px);
+	justify-content: space-between;
+	margin-top: 5vh;
+	font-family: $font_0, $font_1;
+	font-size: 30px;
+	color: $color_masala_approx;
+	cursor: pointer;
+	padding: 10px;
+}
+.detail--concert--price--left {
+	display: flex;
+	flex-direction: column;
+}
+.detail--concert--price--submit {
+	border: none;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 11px;
+	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: 0 3px 6px 0 $black_16;
+	background-color: $color_purple_approx;
+	width: 100%;
+	height: 5vh;
+	font-family: $font_0, $font_1;
+	font-size: 30px;
+	color: $white;
+	margin-top: 5vh;
+	cursor: pointer;
+}
+.solded {
+	opacity: 0.2;
+}
