@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
-import Main from '../components/Main';
-import DiscoverContainer from './DiscoverContainer';
-import Footer from '../components/Footer';
+import Header from '../components/common/Header';
+import Main from '../components/Main/Main';
+import Discover from '../components/Main/Discover';
+import Footer from '../components/Main/Footer';
 
 import './MainContainer.css';
 
@@ -13,7 +13,7 @@ class MainContainer extends Component {
             <div className="main-container">
                 <Header />
                 <Main />
-                <DiscoverContainer />
+                <Discover />
                 <Footer />
             </div>
         );
