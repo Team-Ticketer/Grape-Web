@@ -26,7 +26,8 @@ contract Grape {
     struct Ticket {
         uint256 concertId;
         address owner;
-        string date;
+        uint256 ticketType;
+        uint256 date;
         string auctionHistorys;
         bool isAuction;
     }
@@ -37,7 +38,8 @@ contract Grape {
         concertList[concertID] = (Concert(concertID, msg.sender, _name, _term, _ownerName, _ticketTypes, _isPossibleAuction, _ticketTypeCounts, _ticketName, _ticketPrice, _ticketDescription, _ticketAmount, 0));
         concertID = concertID++;
     }
-    function getConcert(uint256 concertId) public view returns (
+
+    function getConcert(uint256 _concertId) public view returns (
         address _creator,
         string _name,
         string _term,
@@ -52,31 +54,33 @@ contract Grape {
         uint256 _ticketListCount
     )
     {
-        _creator = concertList[concertId].creator;
-        _name = concertList[concertId].name;
-        _term = concertList[concertId].term;
-        _ownerName = concertList[concertId].ownerName;
-        _ticketTypes = concertList[concertId].ticketTypes;
-        _isPossibleAuction = concertList[concertId].isPossibleAuction;
-        _ticketListCount = concertList[concertId].ticketListCount;
-        _ticketName = concertList[concertId]._ticketName;
-        _ticketPrice = concertList[concertId]._ticketPrice;
-        _ticketDescription = concertList[concertId]._ticketDescription;
-        _ticketAmount = concertList[concertId]._ticketAmount;
+        _creator = concertList[_concertId].creator;
+        _name = concertList[_concertId].name;
+        _term = concertList[_concertId].term;
+        _ownerName = concertList[_concertId].ownerName;
+        _ticketTypes = concertList[_concertId].ticketTypes;
+        _isPossibleAuction = concertList[_concertId].isPossibleAuction;
+        _ticketListCount = concertList[_concertId].ticketListCount;
+        _ticketTypeCounts = concertList[_concertId].ticketTypeCounts;
+        _ticketName = concertList[_concertId].ticketName;
+        _ticketPrice = concertList[_concertId].ticketPrice;
+        _ticketDescription = concertList[_concertId].ticketDescription;
+        _ticketAmount = concertList[_concertId].ticketAmount;
     }
 
-    function getconcertID() returns (
+    function getconcertID() public view returns (
         uint256 _concertID
     ) {
         _concertID = concertID;
     }
 
-    function payTicekt(uint256 concertId, uint256 ticketPrice, string ticketName, string date) public payable {
-        concertList[concertId].creator.send(ticketPrice);
-        concertList[concertId].ticketList[concertList[concertId].ticketListCount].concertId = concertId;
-        concertList[concertId].ticketList[concertList[concertId].ticketListCount].owner = msg.sender;
-        concertList[concertId].ticketList[concertList[concertId].ticketListCount].date = date;
-        concertList[concertId].ticketList[concertList[concertId].ticketListCount].isAuction = false;
-        concertList[concertId].ticketListCount = concertList[concertId].ticketListCount++;
+    function payTicekt(uint256 _concertId, uint256 _ticketPrice, uint256 _ticketType) public payable {
+        concertList[_concertId].creator.transfer(concertList[_concertId].ticketPrice[_ticketType]);
+        concertList[_concertId].ticketList[concertList[_concertId].ticketListCount].concertId = _concertId;
+        concertList[_concertId].ticketList[concertList[_concertId].ticketListCount].owner = msg.sender;
+        concertList[_concertId].ticketList[concertList[_concertId].ticketListCount].ticketType = _ticketType;
+        concertList[_concertId].ticketList[concertList[_concertId].ticketListCount].date = block.timestamp;
+        concertList[_concertId].ticketList[concertList[_concertId].ticketListCount].isAuction = false;
+        concertList[_concertId].ticketListCount = concertList[_concertId].ticketListCount++;
     }
 }
