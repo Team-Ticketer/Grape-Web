@@ -45,7 +45,8 @@
     "redux": "^4.0.0",
     "redux-connect-decorator": "^0.2.1",
     "redux-thunk": "^2.2.0",
-    "truffle-privatekey-provider": "^0.1.0"
+    "truffle-privatekey-provider": "^0.1.0",
+    "websocket": "^1.0.28"
   },
   "devDependencies": {
     "@babel/preset-es2016": "^7.0.0-beta.53",
