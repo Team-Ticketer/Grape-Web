@@ -124,7 +124,7 @@ contract Grape {
 
     function cancleSellUsedTicket(uint256 _concertId, uint256 _ticketType) public payable {
         for (uint256 i = 0; i < concertList[_concertId].ticketListCount; i++) {
-            if (concertList[_concertId].ticketList[i].owner == msg.sender && !concertList[_concertId].ticketList[i].isAuction) {
+            if (concertList[_concertId].ticketList[i].owner == msg.sender && concertList[_concertId].ticketList[i].isAuction) {
                 concertList[_concertId].creator.transfer(concertList[_concertId].ticketPrice[_ticketType] * 1 / 10);
                 concertList[_concertId].ticketList[i].isAuction = false;
                 break;
