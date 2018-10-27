@@ -10,6 +10,8 @@ import LoginContainer from './container/LoginContainer';
 import DetailPostContainer from './container/DetailPostContainer';
 import ConcertsContainer from './container/ConcertsContainer';
 import MakeConcertContainer from "./container/MakeConcertContainer";
+import Payment from './container/Payment';
+
 
 const renderRoutes = RootComponent => (
   <Provider store={store}>
@@ -21,6 +23,7 @@ const renderRoutes = RootComponent => (
           <Route path="/detail/:post" component={DetailPostContainer} exact/>
           <Route path="/concerts" component={ConcertsContainer} exact />
           <Route path="/concert/make" component={MakeConcertContainer} exact/>
+          <Route path="/payment" component={Payment} exact/>
         </RootComponent>
       </Switch>
     </BrowserRouter>

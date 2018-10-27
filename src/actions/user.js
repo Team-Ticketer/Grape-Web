@@ -3,6 +3,6 @@ import {
 } from './actionTypes';
 
 export const getName = (name) => ({
-  type: INTEGRATE_WALLET,
-  payload: { name },
+  type: GET_NAME,
+  payload: name,
 })

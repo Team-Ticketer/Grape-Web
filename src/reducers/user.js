@@ -11,10 +11,10 @@ const initialState = {
 const walletReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_NAME:
-      const name = action.payload.name;
+    console.log(action.payload)
       return {
         ...state,
-        name,
+        name: action.payload,
       }
     default:
       return state

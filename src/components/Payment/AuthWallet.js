@@ -1,12 +1,10 @@
 import React, { Component, Fragment } from 'react'
 import connect from 'redux-connect-decorator';
-import cx from 'classnames'
-
-import { cav } from 'klaytn/caver'
+import QRcode from 'qrcode-react';
+import { cav } from 'klaytn/caver';
+import './css/AuthWallet.scss';
 
 import { integrateWallet, removeWallet} from 'actions/wallet';
-
-import './Auth.scss'
 
 @connect((state) => ({
   walletInstance: state.wallet.walletInstance,
@@ -14,12 +12,13 @@ import './Auth.scss'
   integrateWallet,
   removeWallet,
 })
-class Auth extends Component {
+class AuthWallet extends Component {
   state = {
     privateKey: '',
     password: '',
     keystoreMsg: '',
     keystore: '',
+    qrcode: false,
     accessType: 'keystore', // || 'privateKey'
   }
 
@@ -48,13 +47,13 @@ class Auth extends Component {
         }
 
         this.setState({
-          keystoreMsg: '올바른 키스토어 파일입니다. 패스워드를 입력해주세요.',
+          keystoreMsg: 'right keystore file. please input password',
           fileName,
           keystore: target.result,
           keystoreAddress: parsedKeystore.address,
         }, () => document.querySelector('#input-password').focus())
       } catch (e) {
-        this.setState({ keystoreMsg: '올바른 키스토어 파일 (JSON)이 아닙니다.' })
+        this.setState({ keystoreMsg: 'wrong keystore file(JSON)' })
         return
       }
     }
@@ -73,7 +72,7 @@ class Auth extends Component {
         this.reset()
       } catch (e) {
         console.log(e)
-        this.setState({ keystoreMsg: '패스워드가 맞지 않습니다.' })
+        this.setState({ keystoreMsg: 'wrong password' })
       }
       return
     }
@@ -91,13 +90,16 @@ class Auth extends Component {
   }
 
   renderAuth = () => {
-    const { privateKey, keystoreMsg, accessType } = this.state
+    const { privateKey, keystoreMsg, accessType,qrcode } = this.state
     const { walletInstance, integrateWallet, removeWallet } = this.props
     if (walletInstance) {
       return (
         <Fragment>
-          <label className="Auth__label">Integrated: </label>
+          <label className="Auth__label">Wallet Address</label>
           <p className="Auth__address">{walletInstance.address}</p>
+          <div className="Auth__qrcode">
+            {qrcode ? <div onClick={()=>this.setState({qrcode:!qrcode})}><QRcode value={`${walletInstance.address}/${walletInstance.privateKey}`} /></div> : <span onClick={()=>this.setState({qrcode:!qrcode})}>View QRcode</span>}
+          </div>
           <button className="Auth__logout" onClick={removeWallet}>Logout</button>
         </Fragment>
       )
@@ -105,29 +107,21 @@ class Auth extends Component {
 
     return (
       <Fragment>
-        {accessType === 'keystore'
-          ? (
-            <Fragment>
-              <label className="Auth__label">Keystore:</label>
-              <input className="Auth__keystoreInput" type="file" onChange={this.handleImport} />
-              <label className="Auth__label">Password:</label>
-              <input id="input-password" className="Auth__passwordInput" name="password" type="password" onChange={this.handleChange} />
-            </Fragment>
-          )
-          : (
-            <Fragment>
-              <label className="Auth__label">Private Key:</label>
-              <input className="Auth__input" name="privateKey" onChange={this.handleChange} />
-            </Fragment>
-          )
-        }
-        <button className="Auth__login" onClick={this.handleLogin}>Login</button>
-        <p className="Auth__keystoreMsg">{keystoreMsg}</p>
-        <p className="Auth__toggleAccessButton" onClick={this.toggleAccessType}>
-          {accessType === 'privateKey'
-            ? 'Want to login with keystore? (click)'
-            : 'Want to login with privatekey? (click)'
+        <div className="Auth__label">Keystore File</div>
+        <div>
+          {
+            this.state.keystore === ''|| this.state.keystore.name === ''?
+            <label className="Auth__keystoreInputLabel" htmlFor="keystoreInput">Click to upload Keystore</label> :
+            <label className="Auth__keystoreInputLabel" htmlFor="keystoreInput">{this.state.fileName}</label>
           }
+          <input id="keystoreInput" className="Auth__keystoreInput" type="file" onChange={this.handleImport} placeholder="Filename.json"/>
+        </div>
+        <div>
+        <input id="input-password" className="Auth__passwordInput" name="password" type="password" placeholder="password" onChange={this.handleChange} />
+        </div>
+        <span className="Auth__keystoreMsg">{this.state.keystoreMsg}</span>
+        <button className="Auth__logout" onClick={this.handleLogin}>Login</button>
+        <p className="Auth__toggleAccessButton" onClick={this.toggleAccessType}>
         </p>
       </Fragment>
     )
@@ -145,11 +139,10 @@ class Auth extends Component {
   render() {
     const { keystore } = this.state
     return (
-      <div className={cx('Auth', {
-        'Auth--active': !!keystore,
-      })}
-      >
-        <div className="Auth__flag" />
+      <div className="Auth">
+        <div className="Auth__title">
+          Manage Wallet
+        </div>
         <div className="Auth__content">
           {this.renderAuth()}
         </div>
@@ -158,4 +151,4 @@ class Auth extends Component {
   }
 }
 
-export default Auth;
+export default AuthWallet;
