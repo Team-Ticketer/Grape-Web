@@ -19,6 +19,7 @@
 }
 
 .header--button--list {
+  position: relative;
   font-size: 25px;
   color: #6d17d7;
   display: flex;
