@@ -1,25 +1,29 @@
 import React from 'react'
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { syncHistoryWithStore } from 'react-router-redux'
 
 import store from './store'
 
-const history = syncHistoryWithStore(browserHistory, store)
+import Example from 'components/Example';
+import MainContainer from './container/MainContainer';
+import LoginContainer from './container/LoginContainer';
+import DetailPostContainer from './container/DetailPostContainer';
+import ConcertsContainer from './container/ConcertsContainer';
 
-import Example from 'components/Example'
 
-if (DEV) {
-  window.browserHistory = browserHistory
-}
-
-const renderRoutes = rootComponent => (
+const renderRoutes = RootComponent => (
   <Provider store={store}>
-    <Router history={history}>
-      <Route path="/" component={rootComponent}>
-        <Route path="/example" component={Example} />
-      </Route>
-    </Router>
+    <BrowserRouter>
+      <Switch>
+        <RootComponent>
+          <Route path="/" component={MainContainer} exact/>
+          <Route path="/login" component={LoginContainer} exact/>
+          <Route path="/detail/:post" component={DetailPostContainer} exact/>
+          <Route path="/concerts" component={ConcertsContainer} exact />
+        </RootComponent>
+      </Switch>
+    </BrowserRouter>
   </Provider>
 )
 

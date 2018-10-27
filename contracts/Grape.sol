@@ -10,7 +10,6 @@ contract Grape {
         string name;
         string term;
         string ownerName;
-        string ticketTypes;
         bool isPossibleAuction;
         uint256 ticketTypeCounts;
         string[] ticketName;
