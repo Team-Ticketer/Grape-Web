@@ -30,7 +30,7 @@ class Payment extends Component {
                         <span className="payment--executed--right"><span className="payment--executed--klay">{this.state.myBalance - this.state.transferFee}</span>KLY</span>
                     </div>
                 </div>
-                <input type="button" value="Pay to finish" className="payment--submit"/>
+                <input type="button" onClick={() => this.props.sendTranstion()} value="Pay to finish" className="payment--submit"/>
             </div>
         );
     }

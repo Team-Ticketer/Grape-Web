@@ -2,18 +2,14 @@ import React from 'react';
 
 import './FirstMakeConcert.scss';
 
-const FirstMakeConcert = ({incIndex, changeOrgName, changeOrgEmail, changeOrgDesc, changeConcertName, changeArtistName, changeStartYY, changeStartMM, changeStartDD, changeEndYY, changeEndMM, changeEndDD, changeYoutubeUri, changeLocation, changeFile, changeSpecificInfo, changePersonalAgree, state }) => {
+const FirstMakeConcert = ({incIndex, changeTransferable, changeOrgName, changeConcertName, changeStartYY, changeStartMM, changeStartDD, changeEndYY, changeEndMM, changeEndDD, changeYoutubeUri, changeLocation, changeFile, changeSpecificInfo, changePersonalAgree, state }) => {
     return (
         <div className="first--wrapper">
             <div className="first--wrapper--inner">
                 <div className="first--organization">
                     <p className="first--form--info">organization or Company info</p>
                     <div className="first--organization--form">
-                        <div className="first--organization--name--email">
-                            <input type="text" className="first--organization--top" placeholder="Name" value={state.orgName} onChange={changeOrgName}/>
-                            <input type="text" className="first--organization--top" placeholder="email address" value={state.orgEmail} onChange={changeOrgEmail}/>
-                        </div>
-                        <input type="text" className="first--organization--description" placeholder="Description" value={state.orgDesc} onChange={changeOrgDesc}/>
+                        <input type="text" className="first--organization--description" placeholder="Name" value={state.orgName} onChange={changeOrgName}/>
                     </div>
                 </div>
 
@@ -22,13 +18,6 @@ const FirstMakeConcert = ({incIndex, changeOrgName, changeOrgEmail, changeOrgDes
                     Concert Name
                     </p>
                     <input type="text" className="first--name--input" placeholder="Name" value={state.concertName} onChange={changeConcertName}/>
-                </div>
-
-                <div className="first--name">
-                    <p className="first--form--info">
-                    Artist Name
-                    </p>
-                    <input type="text" className="first--name--input" placeholder="Name" value={state.artistName} onChange={changeArtistName}/>
                 </div>
 
                 <div className="first--date">
@@ -70,7 +59,7 @@ const FirstMakeConcert = ({incIndex, changeOrgName, changeOrgEmail, changeOrgDes
                         Location
                     </p>
                     <div className="first--location--wrapper">
-                        <input type="text" value={state.location} onChange={changeLocation}/>
+                        <input type="text" className="first--organization--description" value={state.location} onChange={changeLocation}/>
                     </div>
                 </div>
                 
@@ -89,7 +78,12 @@ const FirstMakeConcert = ({incIndex, changeOrgName, changeOrgEmail, changeOrgDes
                     </p>
                     <textarea className="first--specific--info--input" placeholder="Write Here" value={state.specificInfo} onChange={changeSpecificInfo}></textarea>
                 </div>
-
+                <div className="first--check">
+                    <span className="first--check--text">
+                    Allow transactions
+                    </span>
+                    <input type="checkbox" onChange={changeTransferable} checked={state.transferable}/>
+                </div>
                 <div className="first--check">
                     <span className="first--check--text">Check personal information ageement</span>
                     <input type="checkbox" className="first--check--input" value={state.personalAgree} onChange={changePersonalAgree}/>

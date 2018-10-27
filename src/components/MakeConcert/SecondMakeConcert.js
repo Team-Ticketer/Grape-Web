@@ -36,12 +36,6 @@ const SecondMakeConcert = ({state, changeName, changeDescription, changeAmount, 
                                 <input type="number" className="second--form--price--input" value={state.price} placeholder="Price" onChange={changePrice}/> KLY
                             </span>
                         </span>
-                        <span className="second--form--trans">
-                            <span className="second--form--left--letter">
-                                transferable
-                            </span>
-                            <input type="checkbox" onChange={changeTransferable} checked={state.transferable}/>
-                        </span>
                     </div>
                     <div className="second--form">
                         <span></span>

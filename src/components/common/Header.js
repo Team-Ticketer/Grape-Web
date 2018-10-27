@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import cookie from 'react-cookies';
 
 import './Header.css';
+import UserModal from './UserModal';
 
 class Header extends React.Component {
     state = {
@@ -23,8 +24,10 @@ class Header extends React.Component {
                 <Link to="/" className="header--logo">
                     GRAPE</Link>
                 <span className="header--button--list">
-                    {this.state.name === null ? <Link to="/login" className="header--button">Login</Link> : <span className="header--button">{this.state.name} 님</span>}
+                    {this.state.name === null ? <Link to="/login" className="header--button">Login</Link> : <span className="header--button" onClick={()=>this.setState({userModal:!this.state.userModal})}>{this.state.name} 님</span>}
+                    {this.state.userModal ? <UserModal/> : null}
                 </span>
+                
             </div>
         );
     }
