@@ -39,6 +39,7 @@ contract Grape {
         address owner;
         uint256 ticketType;
         uint256 date;
+        string encryptionAuthKey;
         uint256 ticketHistoryCount;
         mapping (uint256 => AuctionHistory) auctionHistorys;
         bool isAuction;
@@ -86,7 +87,7 @@ contract Grape {
         _concertID = concertID;
     }
 
-    function payTicekt(uint256 _concertId, uint256 _ticketType) public payable {
+    function payTicekt(uint256 _concertId, uint256 _ticketType, string _encryptionAuthKey) public payable {
         concertList[_concertId].creator.transfer(concertList[_concertId].ticketPrice[_ticketType]);
         concertList[_concertId].ticketList[concertList[_concertId].ticketListCount].concertId = _concertId;
         concertList[_concertId].ticketList[concertList[_concertId].ticketListCount].owner = msg.sender;
@@ -94,7 +95,44 @@ contract Grape {
         concertList[_concertId].ticketList[concertList[_concertId].ticketListCount].date = block.timestamp;
         concertList[_concertId].ticketList[concertList[_concertId].ticketListCount].isAuction = false;
         concertList[_concertId].ticketList[concertList[_concertId].ticketListCount].ticketHistoryCount = 0;
+        concertList[_concertId].ticketList[concertList[_concertId].ticketListCount].encryptionAuthKey = _encryptionAuthKey;
         concertList[_concertId].ticketListCount++;
+    }
+
+    function getTicket(uint256 _concertId, address _owner) public view returns (
+        uint256 _ticketId,
+        uint256 _ticketType,
+        uint256 _date,
+        string _ticketName,
+        uint256 _ticketPrice,
+        string _encryptionAuthKey,
+        uint256 _ticketHistoryCount,
+        uint256 _auctionHistoryLength,
+        bool _isAuction
+    ){
+        for (uint256 i = 0; i<concertList[_concertId].ticketListCount; i++) {
+            if (concertList[_concertId].ticketList[i].owner == _owner) {
+                _ticketId = i;
+                _ticketType = concertList[_concertId].ticketList[i].ticketType;
+                _date = concertList[_concertId].ticketList[i].date;
+                _ticketName = concertList[_concertId].ticketName[concertList[_concertId].ticketList[i].ticketType];
+                _ticketPrice = concertList[_concertId].ticketPrice[concertList[_concertId].ticketList[i].ticketType];
+                _encryptionAuthKey = concertList[_concertId].ticketList[i].encryptionAuthKey;
+                _ticketHistoryCount = concertList[_concertId].ticketList[i].ticketHistoryCount;
+                _isAuction = concertList[_concertId].ticketList[i].isAuction;
+                break;
+            }
+        }
+    }
+
+    function getTicketHistory(uint256 _concertId, uint256 _ticketId, uint256 _ticketHistoryCount) returns (
+        uint256 _date,
+        address _owner,
+        uint256 _price
+    ) {
+        _date = concertList[_concertId].ticketList[_ticketId].auctionHistorys[_ticketHistoryCount].date;
+        _owner = concertList[_concertId].ticketList[_ticketId].auctionHistorys[_ticketHistoryCount].owner;
+        _price = concertList[_concertId].ticketList[_ticketId].auctionHistorys[_ticketHistoryCount].price;
     }
 
     function buyUsedTicket(uint256 _concertId, uint256 _ticketType) public payable {

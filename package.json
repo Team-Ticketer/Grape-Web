@@ -24,6 +24,7 @@
   "author": "nujabes403",
   "license": "GPL-3.0",
   "dependencies": {
+    "axios": "^0.18.0",
     "bignumber.js": "^7.2.1",
     "caver-js": "0.0.1-b",
     "classnames": "^2.2.5",
@@ -33,6 +34,7 @@
     "jquery": "^3.3.1",
     "memory-fs": "^0.4.1",
     "react": "^16.3.2",
+    "react-cookies": "^0.1.0",
     "react-dom": "^16.3.2",
     "react-kakao-login": "^1.1.0",
     "react-redux": "^5.0.7",
