@@ -1,0 +1,63 @@
+.transfer{
+    &__ticket {
+        display: flex;
+        width: 100%;
+        margin-top: 2vh;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 30px 30px 30px;
+        box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.16);      
+        &--left {
+            display: flex;
+            width: 60%;
+            flex-direction: column;
+        }
+        &--title {
+            font-family: 'VT323';
+            font-size: 30px;
+            color: black;
+        }
+        &--desc {
+            font-family: 'VT323';
+            font-size: 25px;
+            color: #3d3d3d;
+            width: 100%;
+        }
+    }
+    &__wrapper {
+        width: 1300px;
+        border-radius: 16px;
+        margin: 0 auto;
+        background-color: white;
+        padding: 0 0 30px 0;
+    }
+    &__nav {
+        display: flex;
+        width: 100%;
+        &__item {
+            display: flex;
+            width: 50%;
+            height: 7vh;
+            justify-content: center;
+            align-items: center;
+            font-family: 'VT323';
+            font-size: 45px;
+            color: #3d3d3d;
+        }
+    }
+    &__status {
+        display: flex;
+        color: #6b10af;
+        justify-content: flex-end;
+        font-family: 'VT323';
+        font-size: 25px;
+    }
+
+    &__oppo {
+        color: #3d3d3d;
+    }
+
+    &--clicked {
+        border-bottom: 4px solid #6b10af;
+    }
+}
