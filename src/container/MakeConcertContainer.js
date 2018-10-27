@@ -14,9 +14,7 @@ class MakeConcertContainer extends Component {
         // ex:) new cav.klay.Contract(DEPLOYED_ABI, DEPLOYED_ADDRESS)
         // You can call contract method through this instance.
         // Now you can access the instance by `this.exampleContract` variable.
-        this.Contract = DEPLOYED_ABI
-          && DEPLOYED_ADDRESS
-          && new cav.klay.Contract(DEPLOYED_ABI, DEPLOYED_ADDRESS)
+        this.Contract;
         this.state = {
             count: '',
             index: 0,
