@@ -7,14 +7,15 @@ class GoogleMap extends Component {
         height: '100%'
     }
     render() {
+        const {lat, lng} = this.props;
         return (
             <Map 
                 google={this.props.google} 
                 zoom={17}
                 style={this.style}
                 initialCenter={{
-                    lat: 33.500315,
-                    lng: 126.530035
+                    lat: lat,
+                    lng: lng
                   }}
             >
                 <Marker name={'Current location'} />
