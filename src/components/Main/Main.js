@@ -28,12 +28,12 @@ const Main = () => {
                         </div>
                         <div className="main--ticket--form--box">
                             <div className="main--ticket--form--box--inner">
-                                <input type="text" className="main--ticket--form--input" placeholder="Date"/>
+                                <input type="date" className="main--ticket--form--input" placeholder="Date"/>
                             </div>
                         </div>
                         <div className="main--ticket--form--box">
                             <div className="main--ticket--form--box--inner">
-                                <input type="text" className="main--ticket--form--input" placeholder="Price"/>
+                                <input type="text" className="main--ticket--form--input" placeholder="location"/>
                             </div>
                         </div>
                     </div>

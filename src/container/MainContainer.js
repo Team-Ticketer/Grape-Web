@@ -7,6 +7,13 @@ import './TotalContainer.css';
 
 class MainContainer extends Component {
 
+    state = {
+        concertName: '',
+        artistName: '',
+        Date: '',
+        location: ''
+    }
+
     render() {
         return (
             <div className="main--container">
@@ -18,4 +25,4 @@ class MainContainer extends Component {
     }
 }
 
-export default MainContainer;
+ex

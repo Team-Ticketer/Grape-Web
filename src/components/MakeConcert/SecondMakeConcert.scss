@@ -1,0 +1,178 @@
+.second--wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    &--inner {
+        width: 50%;
+        padding: 5vh 0 5vh 0;
+    }
+}
+
+.second {
+    &--title {
+        font-family: 'VT323', monospace;
+        font-size: 40px;
+    }
+
+    &--ticket {
+        &--list {
+            width: 100%;
+            margin-top: 2vh;
+        }
+        &--wrapper {
+            display: flex;
+            width: 100%;
+            height: 10vh;
+            justify-content: space-between;
+            padding: 20px 20px 20px 20px;
+            border-radius: 10px;
+            border: solid 1px #707070;
+            margin-top: 2vh;
+        }
+        &--name {
+            font-family: 'VT323', monospace;
+            font-size: 30px;
+        }
+        &--description {
+            display: inline-block;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+        &--left {
+            display: flex;
+            width: 70%;
+            flex-direction: column;
+        }
+        &--right {
+            display: flex;
+            width: 20%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        &--Klay {
+            display:flex;
+            justify-content: flex-end;
+            font-family: 'VT323', monospace;
+            font-size: 40px;
+            color: #3d3d3d;
+        }
+        &--number {
+            color: #6b10af;
+            margin-right: 5px;
+        }
+        &--transfer {
+            font-family: 'VT323', monospace;
+            font-size: 30px;
+            color: #3d3d3d;
+        }
+    }
+
+    &--form{
+        display: flex;
+        width: 100%;
+        height: 17%;
+        justify-content: space-between;
+        align-items: center;
+        &--wrapper {
+            display: flex;
+            margin-top: 2vh;
+            width: 100% ;
+            height: 25vh;
+            padding: 20px 20px 20px 20px;
+            justify-content: space-between;
+            flex-direction: column;
+            border-radius: 10px;
+            box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+            border: solid 1px #707070;
+        }
+
+        &--left {
+            &--letter {
+                font-family: 'VT323', monospace;
+                color: #3d3d3d;
+                font-size: 30px;
+            }
+        }
+
+
+        &--input {
+            width: 50%;
+            height: 100%;
+            border-radius: 5px;
+            border: solid 1px #707070;
+            font-family: 'VT323', monospace;
+            color: #3d3d3d;
+            font-size: 20px;
+            padding: 0 5px 0 5px;
+        }
+
+        &--price {
+            width: 50%;
+            border-right: 1px solid #707070;
+            padding-right: 20px;
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            &--form {
+                width: 50%;
+                display:flex;
+                justify-content: space-between;
+                font-family: 'VT323', monospace;
+                color: #3d3d3d;
+                font-size: 30px;
+                height: 100%;
+            }
+            &--input {
+                width: 70%;
+                height: 100%;
+                border-radius: 5px;
+                border: solid 1px #707070;
+                font-family: 'VT323', monospace;
+                color: #3d3d3d;
+                font-size: 30px;
+                padding: 0 5px 0 5px;
+            }
+        }
+
+        &--trans {
+            display: flex;
+            width: 50%;
+            padding-left: 20px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &--submit {
+            background-color: #6b10af;
+            border-radius: 5px;;
+            font-family: 'VT323', monospace;
+            font-size: 20px;
+            color: white;
+            width: 15%;
+            height: 100%;
+            cursor: pointer;
+        }
+    }
+    &--inc {
+        &--wrapper {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            margin-top: 4vh;
+        }
+        &--button {
+            width: 30%;
+            height: 5vh;
+            background-color: #6b10af;
+            border-radius: 5px;
+            font-family: 'VT323', monospace;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+    }
+}
