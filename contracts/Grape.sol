@@ -4,12 +4,24 @@ pragma experimental ABIEncoderV2;
 contract Grape {
     uint256 concertID = 0;
 
+    modifier isOwner(address user){
+        require(msg.sender == user, "Authorization Failed");
+        _;
+    }
+
+    modifier isTimeEnd(uint time){
+        require(time < now, "Time is end");
+        _;
+    }
+
+    modifier isAuction(uint256 _ticketId, uint256 _concertId){
+        require(concertList[_concertId].ticketList[_ticketId].isAuction == true, "Not Auction");
+        _;
+    }
+
     struct Concert {
         uint256 concertId;
         address creator;
-        string name;
-        string term;
-        string ownerName;
         bool isPossibleAuction;
         uint256 ticketTypeCounts;
         string[] ticketName;
@@ -31,19 +43,15 @@ contract Grape {
         bool isAuction;
     }
 
-    function createConcert(string _name, string _term, string _ownerName, string _ticketTypes, bool _isPossibleAuction,
+    function createConcert(bool _isPossibleAuction,
     uint256 _ticketTypeCounts, string[] _ticketName, uint256[] _ticketPrice, string[] _ticketDescription, uint256[] _ticketAmount) 
     public payable returns(uint256 concertID){
-        concertList[concertID] = (Concert(concertID, msg.sender, _name, _term, _ownerName, _ticketTypes, _isPossibleAuction, _ticketTypeCounts, _ticketName, _ticketPrice, _ticketDescription, _ticketAmount, 0));
+        concertList[concertID] = (Concert(concertID, msg.sender, _isPossibleAuction, _ticketTypeCounts, _ticketName, _ticketPrice, _ticketDescription, _ticketAmount, 0));
         concertID++;
     }
 
     function getConcert(uint256 _concertId) public view returns (
         address _creator,
-        string _name,
-        string _term,
-        string _ownerName,
-        string _ticketTypes,
         uint256 _ticketTypeCounts,
         string[] _ticketName,
         uint256[] _ticketPrice,
@@ -54,10 +62,6 @@ contract Grape {
     )
     {
         _creator = concertList[_concertId].creator;
-        _name = concertList[_concertId].name;
-        _term = concertList[_concertId].term;
-        _ownerName = concertList[_concertId].ownerName;
-        _ticketTypes = concertList[_concertId].ticketTypes;
         _isPossibleAuction = concertList[_concertId].isPossibleAuction;
         _ticketListCount = concertList[_concertId].ticketListCount;
         _ticketTypeCounts = concertList[_concertId].ticketTypeCounts;
@@ -73,7 +77,7 @@ contract Grape {
         _concertID = concertID;
     }
 
-    function payTicekt(uint256 _concertId, uint256 _ticketPrice, uint256 _ticketType) public payable {
+    function payTicekt(uint256 _concertId, uint256 _ticketType) public payable {
         concertList[_concertId].creator.transfer(concertList[_concertId].ticketPrice[_ticketType]);
         concertList[_concertId].ticketList[concertList[_concertId].ticketListCount].concertId = _concertId;
         concertList[_concertId].ticketList[concertList[_concertId].ticketListCount].owner = msg.sender;

@@ -24,7 +24,7 @@ module.exports = {
       network_id: NETWORK_ID,
       from: FROM,
       gas: GASLIMIT,
-      gasPrice: 25000000000,
+      gasPrice: null,
     },
   },
 }
