@@ -1,6 +1,7 @@
 import React from 'react';
 import './Main.css';
 
+import { Link } from 'react-router-dom';
 
 const Main = ({changeConcertName, changeArtistName, changeDate, changeLocation, state, onSearch}) => {
     let dt = new Date()
@@ -42,9 +43,9 @@ const Main = ({changeConcertName, changeArtistName, changeDate, changeLocation, 
                     <div className="main--ticket--submit--box">
                         <div className="main--ticket--submit--box--inner">
                             <div className="main--ticket--submit--empty"></div>
-                            <div className="main--ticket--submit--button" onClick={onSearch}>
+                            <Link to ="/concerts" className="main--ticket--submit--button" onClick={onSearch}>
                                 <img src={`/images/search.png`} alt="search button" className="main--ticket--submit--button--img"/>
-                            </div>
+                            </Link>
                             <div className="main--ticket--submit--empty"></div>
                         </div>
                     </div>

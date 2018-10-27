@@ -59,6 +59,8 @@ class MakeConcertContainer extends Component {
 
     sendTranstion() {
         const { transferable, ticketList } = this.state;
+        const {history} = this.props;
+        history.push('/');
         let ticketName = [];
         let ticketPrice = [];
         let ticketDescription  = [];

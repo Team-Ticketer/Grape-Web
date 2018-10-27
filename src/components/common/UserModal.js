@@ -17,7 +17,7 @@ class UserModal extends Component {
           - My Tickets
           </div>
         </Link>
-        <Link to="/history">
+        <Link to="/transfer/request">
           <div className="UserModal__Lists UserModal__Lists--left">
           - Transfer History
           </div>
