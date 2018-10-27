@@ -11,6 +11,8 @@ import DetailPostContainer from './container/DetailPostContainer';
 import ConcertsContainer from './container/ConcertsContainer';
 import MakeConcertContainer from "./container/MakeConcertContainer";
 import Payment from './container/Payment';
+import TransferRequestContainer from './container/TransferRequestContainer';
+import TransferProposeContainer from './container/TransferProposeContainer';
 
 
 const renderRoutes = RootComponent => (
@@ -24,6 +26,8 @@ const renderRoutes = RootComponent => (
           <Route path="/concerts" component={ConcertsContainer} exact />
           <Route path="/concert/make" component={MakeConcertContainer} exact/>
           <Route path="/payment" component={Payment} exact/>
+          <Route path="/transfer/request" component={TransferRequestContainer} exact/>
+          <Route path="/transfer/propose" component={TransferProposeContainer} exact/>
         </RootComponent>
       </Switch>
     </BrowserRouter>
