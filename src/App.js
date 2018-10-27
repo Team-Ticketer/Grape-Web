@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import BlockNumber from 'components/BlockNumber'
 import Auth from 'components/Auth'
+import Header from 'components/common/Header'
 
 
 import * as walletActions from 'actions/wallet'
@@ -25,6 +26,7 @@ class App extends Component {
       <div className="App">
         <BlockNumber />
         <Auth />
+          <Header />
         {this.props.children}
       </div>
     )

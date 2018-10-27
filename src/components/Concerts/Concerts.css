@@ -1,18 +1,15 @@
-.concerts--wrapper {
-    min-height: 300vh;
-}
-
 .concerts--search--wrapper {
     position: sticky;
     display: flex;
-    width: 44vw;
-    height: 8vh;
+    width: 40vw;
+    height: 10vh;
     border-radius: 7px;
-    padding: 2vh 3vw 2vh 3vw;
+    padding: 2vh 4vw 2vh 4vw;
     margin-top: 3vh;
     background-color: rgba(164,79,227, 0.73);
-    left: 25%;
+    left: 30%;
     top: 2vh;
+    z-index: 2;
     justify-content: space-between;
 }
 
@@ -31,10 +28,63 @@
     justify-content: center;
     align-items: center;
     background-color: #6b10af;
+    cursor: pointer;
 }
 
 .concerts--search--btn {
-    width: 25%;
-    height: 25%;
+    width: 28%;
+    height: 28%;
 }
 
+.concerts--search--input {
+    width: 100%;
+    height: 47%;
+    padding-left: 10px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    border: solid 3px #6b10af;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+}
+
+.concerts--search--form--bottom {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: 47%;
+}
+
+.concerts--search--input--bottom {
+    width: 33%;
+    padding-left: 10px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    border: solid 3px #6b10af;
+}
+
+.concerts--search--input--bottom::placeholder {
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+}
+
+.concerts--list--wrapper {
+    display: flex;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 2vh;
+    flex-direction: column;
+}
+
+.concerts--list--items--wrapper {
+    width: 100%;
+    column-count: 5;
+    column-gap: 2%;
+}
+
+.concerts--list--title {
+    font-family: 'VT323', monospace;
+    font-size: 55px;
+    text-align: center;
+    width: 100%;
+    height: 70px;
+    color: rgba(61, 61, 61, 0.65);
+    border-bottom: 3px solid rgba(61, 61, 61, 0.65);
+}

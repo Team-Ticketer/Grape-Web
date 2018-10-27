@@ -15,8 +15,8 @@
     "dev": "ENV=DEV node ./frontserver.js webpack.config.js --watch",
     "qa": "ENV=QA node ./frontserver.js webpack.prod.config.js --watch",
     "real": "ENV=REAL node ./frontserver.js webpack.prod.config.js --watch",
-    "start": "ENV=REAL node ./frontserver.js webpack.prod.config.js --watch",
-    "start:local": "ENV=LOCAL node ./frontserver.js webpack.prod.config.js --watch"
+    "start": "node ./frontserver.js webpack.prod.config.js --watch",
+    "start:local": "node ./frontserver.js webpack.prod.config.js --watch"
   },
   "repository": {
     "type": "git"

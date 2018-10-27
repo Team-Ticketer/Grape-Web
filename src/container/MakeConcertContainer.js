@@ -1,14 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import Login from '../components/Login/Login';
 
-class LoginContainer extends Component {
+
+class MakeConcertContainer extends Component {
     render() {
         return (
             <Fragment>
-                <Login />
             </Fragment>
         );
     }
 }
 
-export default LoginContainer;
+export default MakeConcertContainer;
