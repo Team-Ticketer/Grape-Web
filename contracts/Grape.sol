@@ -31,7 +31,7 @@ contract Grape {
         uint256 ticketListCount;
         mapping (uint256 => Ticket) ticketList;
     }
-
+    
     mapping (uint256 => Concert) concertList;
 
     struct Ticket {
@@ -52,9 +52,9 @@ contract Grape {
 
     function createConcert(bool _isPossibleAuction,
     uint256 _ticketTypeCounts, string[] _ticketName, uint256[] _ticketPrice, string[] _ticketDescription, uint256[] _ticketAmount) 
-    public payable returns(uint256 concertID){
-        address foundation = 0xC39b1048d6DD7fB500A2E8F9fFFa0ca33cd4dB5a;
-        foundation.transfer(20);
+    public payable{
+        //address foundation = 0xC39b1048d6DD7fB500A2E8F9fFFa0ca33cd4dB5a;
+        //foundation.transfer(20);
         concertList[concertID] = (Concert(concertID, msg.sender, _isPossibleAuction, _ticketTypeCounts, _ticketName, _ticketPrice, _ticketDescription, _ticketAmount, 0));
         concertID++;
     }
